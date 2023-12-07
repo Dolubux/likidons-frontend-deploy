@@ -11,3 +11,7 @@
     RewriteCond %{REQUEST_URI} !^/i-providers/
     RewriteRule . /index.html [L]
 </IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
