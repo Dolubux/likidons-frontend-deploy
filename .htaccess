@@ -1,6 +1,13 @@
 <IfModule mod_rewrite.c>
-   RewriteEngine on RewriteBase / RewriteCond %{HTTPS} off RewriteRule (.*)
-   https://%{HTTP_HOST}%{REQUEST_URI} [R,L] RewriteRule ^index\.html$ - [L]
-   RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d
-   RewriteRule . /index.html [L]
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{HTTPS} off 
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_URI} !^/i-images/
+    RewriteCond %{REQUEST_URI} !^/i-providers/
+    RewriteRule . /index.html [L]
 </IfModule>
